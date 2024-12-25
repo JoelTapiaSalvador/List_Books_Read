@@ -6,25 +6,22 @@ Created on Fri Nov 15 13:47:24 2024
 """
 import logging
 import os
+import sys
 import unittest
 
 from datetime import datetime, timezone
 
-CODE_DIRECTORY = os.path.join(
-    '..',
-)
+from list_books_read_code import Database
+
+UNIT_TESTS_DIRECTORY = os.path.dirname(os.path.abspath(__file__))
+
+PROJECT_DIRECTORY = os.path.dirname(UNIT_TESTS_DIRECTORY)
 
 LOGGING_DIRECTORY = os.path.join(
-    '.',
+    PROJECT_DIRECTORY,
     'unit_tests_logs',
     'database_only',
 )
-
-original_directory = os.getcwd()
-
-os.chdir(CODE_DIRECTORY)
-
-from database import Database  # noqa
 
 
 class TestDatabase(unittest.TestCase):
@@ -447,10 +444,14 @@ class TestDatabase(unittest.TestCase):
 
 
 if __name__ == '__main__':
+    os.chdir(PROJECT_DIRECTORY)
+
     os.makedirs(LOGGING_DIRECTORY, exist_ok=True)
+
     logging_file_name = datetime.now(timezone.utc).strftime(
         '%Y-%m-%d--%H-%M--%Z.log'
     )
+
     logging_path = os.path.join(LOGGING_DIRECTORY, logging_file_name)
 
     logging
@@ -472,4 +473,4 @@ if __name__ == '__main__':
 
     logging.shutdown()
 
-os.chdir(original_directory)
+    sys.exit()

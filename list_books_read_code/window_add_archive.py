@@ -15,7 +15,7 @@ import PySimpleGUI as sg
 # See https://www.oreilly.com/library/view/python-cookbook/0596001673/ch05s15.html
 from weakref import WeakMethod
 
-from database import Database
+from .database import Database
 
 
 class WindowAddArchive():

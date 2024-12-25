@@ -580,7 +580,13 @@ class Database():
             'Second Level Tables created or already exist.'
         )
 
-    def __verify_add_archive_data(self, data: dict) -> bool:
+###############################################################################
+
+
+###############################################################################
+#                                Public Methods                               #
+
+    def verify_add_archive_data(self, data: dict) -> bool:  # noqa
         """
         Verify if the data to add is in the correct format and values.
 
