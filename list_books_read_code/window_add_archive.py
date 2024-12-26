@@ -6,8 +6,9 @@ Created on Sun Nov 10 01:38:57 2024
 """
 import logging
 
-import datetime as dt
 import PySimpleGUI as sg
+
+from datetime import datetime
 
 # Needed because we store methods as attributes and if not used, Garbage
 # Collector sees there are more than one reference to the object and del will
@@ -235,7 +236,7 @@ class WindowAddArchive():
             key=('DateAdded'),
             readonly=True,
             disabled_readonly_background_color=background_colour,
-            default_text=dt.datetime.today().strftime('%Y-%m-%d'),
+            default_text=datetime.today().strftime('%Y-%m-%d'),
         )
 
         calendar_date_added = sg.CalendarButton(
@@ -332,7 +333,7 @@ class WindowAddArchive():
             readonly=True,
             disabled_readonly_background_color=background_colour,
             visible=False,
-            default_text=dt.datetime.today().strftime('%Y-%m-%d'),
+            default_text=datetime.today().strftime('%Y-%m-%d'),
         )
 
         calendar_date_read = sg.CalendarButton(
